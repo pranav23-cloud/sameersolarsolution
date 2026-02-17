@@ -62,11 +62,6 @@ const Index = () => {
               12+ years of trusted experience in solar water heaters, rooftop systems, street lights, pumps & more. Quality installations backed by warranty.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact">
-                <Button size="lg" className="gradient-amber text-accent-foreground font-semibold text-base shadow-amber hover:opacity-90 transition-opacity">
-                  Get Free Consultation
-                </Button>
-              </Link>
               <a href="tel:9980834941">
                 <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold text-base">
                   <Phone className="mr-2 h-5 w-5" /> Call Now
