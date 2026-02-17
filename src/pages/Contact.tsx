@@ -94,10 +94,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="mt-8 rounded-xl overflow-hidden border border-border h-64 bg-muted flex items-center justify-center">
-                <p className="text-muted-foreground text-sm">Google Map — Karnataka, India</p>
-              </div>
+              {/* Map removed per request */}
             </motion.div>
 
             {/* Contact Form */}
