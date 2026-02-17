@@ -49,11 +49,11 @@ const Header = () => {
             <Phone className="h-4 w-4" />
             9980834941
           </a>
-          <Link to="/contact">
-            <Button className="gradient-amber text-accent-foreground font-semibold shadow-amber hover:opacity-90 transition-opacity">
-              Get Free Quote
+          <a href="tel:9980834941">
+            <Button size="md" className="h-11 rounded-md px-4 text-accent-foreground font-semibold flex items-center gap-2">
+              <Phone className="mr-2 h-5 w-5" /> Call Now
             </Button>
-          </Link>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -81,9 +81,9 @@ const Header = () => {
             <a href="tel:9980834941" className="flex items-center gap-2 text-primary font-medium">
               <Phone className="h-4 w-4" /> 9980834941
             </a>
-            <Link to="/contact" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full gradient-amber text-accent-foreground font-semibold">Get Free Quote</Button>
-            </Link>
+            <a href="tel:9980834941" onClick={() => setMobileOpen(false)}>
+              <Button className="w-full text-accent-foreground font-semibold">Call Now</Button>
+            </a>
           </div>
         </div>
       )}
