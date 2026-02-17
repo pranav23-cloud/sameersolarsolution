@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 215 60% 22%;
+    --primary-foreground: 45 100% 96%;
+
+    --secondary: 45 95% 55%;
+    --secondary-foreground: 215 60% 15%;
+
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 10% 45%;
+
+    --accent: 45 95% 55%;
+    --accent-foreground: 215 60% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 215 60% 22%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 215 60% 18%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 45 95% 55%;
+    --sidebar-primary-foreground: 215 60% 15%;
+    --sidebar-accent: 215 50% 25%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 215 40% 28%;
+    --sidebar-ring: 45 95% 55%;
+
+    --solar-amber: 38 92% 50%;
+    --solar-amber-light: 42 100% 62%;
+    --solar-navy: 215 60% 22%;
+    --solar-navy-deep: 215 65% 14%;
+    --solar-green: 152 55% 42%;
+    --solar-sky: 200 80% 55%;
+  }
+
+  .dark {
+    --background: 215 65% 8%;
+    --foreground: 210 20% 95%;
+    --card: 215 55% 12%;
+    --card-foreground: 210 20% 95%;
+    --popover: 215 55% 12%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 45 95% 55%;
+    --primary-foreground: 215 60% 12%;
+    --secondary: 215 40% 20%;
+    --secondary-foreground: 210 20% 95%;
+    --muted: 215 30% 18%;
+    --muted-foreground: 210 15% 60%;
+    --accent: 45 95% 55%;
+    --accent-foreground: 215 60% 12%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 30% 22%;
+    --input: 215 30% 22%;
+    --ring: 45 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .gradient-solar {
+    background: linear-gradient(135deg, hsl(215 60% 22%) 0%, hsl(215 65% 14%) 100%);
+  }
+
+  .gradient-amber {
+    background: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(42 100% 62%) 100%);
+  }
+
+  .gradient-hero-overlay {
+    background: linear-gradient(to right, hsl(215 65% 14% / 0.85) 0%, hsl(215 65% 14% / 0.4) 60%, transparent 100%);
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(135deg, hsl(38 92% 50%), hsl(42 100% 62%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-solar {
+    box-shadow: 0 10px 40px -10px hsl(215 60% 22% / 0.2);
+  }
+
+  .shadow-amber {
+    box-shadow: 0 8px 30px -8px hsl(38 92% 50% / 0.35);
+  }
+}
