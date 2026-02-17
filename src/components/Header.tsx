@@ -46,7 +46,7 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <a href="tel:9980834941">
-            <Button size="md" className="h-11 rounded-md px-4 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold flex items-center gap-2">
+            <Button size="md" className="h-11 rounded-md px-4 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold flex items-center gap-2">
               <Phone className="mr-2 h-5 w-5" /> Call Now
             </Button>
           </a>
@@ -75,7 +75,7 @@ const Header = () => {
           ))}
           <div className="mt-4 flex flex-col gap-2">
             <a href="tel:9980834941" onClick={() => setMobileOpen(false)}>
-              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-white font-semibold">Call Now</Button>
+              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold">Call Now</Button>
             </a>
           </div>
         </div>

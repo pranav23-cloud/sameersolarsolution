@@ -63,7 +63,7 @@ const Index = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="tel:9980834941">
-                <Button size="lg" variant="solid" className="h-11 rounded-md px-8 bg-yellow-400 hover:bg-yellow-500 text-white font-semibold flex items-center">
+                <Button size="lg" variant="solid" className="h-11 rounded-md px-8 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold flex items-center">
                   <Phone className="mr-2 h-5 w-5" /> Call Now
                 </Button>
               </a>
