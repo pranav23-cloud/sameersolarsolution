@@ -4,5 +4,3 @@ A clean, responsive website for Sameer Solar Solution showcasing products, insta
 
 Live demo: https://pranav23-cloud.github.io/sameersolarsolution/
 
-## License & Contact
-Add your preferred license. For help: https://github.com/pranav23-cloud
