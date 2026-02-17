@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye, Award, Shield, Wrench, HeartHandshake } from "lucide-react";
 import Layout from "@/components/Layout";
-import aboutImg from "@/assets/about-team.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -35,7 +34,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}>
-              <img src={aboutImg} alt="Sameer Associates Team" className="rounded-xl shadow-solar w-full h-80 object-cover" />
+              <img src="https://drive.google.com/uc?id=1Kb1EknCjbGw2QVLrFcthmIPmz1lM-PvW" alt="Sameer Associates Team" className="rounded-xl shadow-solar w-full h-80 object-cover" />
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={1}>
               <h2 className="text-3xl font-bold text-primary mb-6">Our Story</h2>
