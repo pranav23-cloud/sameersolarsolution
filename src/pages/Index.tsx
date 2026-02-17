@@ -181,7 +181,7 @@ const Index = () => {
                 </Button>
               </Link>
               <a href="https://wa.me/919980834941" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold">
+                <Button size="lg" className="h-11 rounded-md px-8 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold flex items-center justify-center">
                   WhatsApp Us
                 </Button>
               </a>
