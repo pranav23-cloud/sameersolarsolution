@@ -175,11 +175,7 @@ const Index = () => {
               Get a free consultation and site inspection. Start saving on electricity bills today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/contact">
-                <Button size="lg" className="gradient-amber text-accent-foreground font-semibold text-base shadow-amber">
-                  Get Free Consultation
-                </Button>
-              </Link>
+              {/* Removed Get Free Consultation button per request */}
               <a href="https://wa.me/919980834941" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="h-11 rounded-md px-8 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold flex items-center justify-center">
                   WhatsApp Us
