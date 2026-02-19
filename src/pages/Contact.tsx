@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/Layout";
+import { saveContactEnquiry } from "@/lib/firebase";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,15 +16,35 @@ const fadeUp = {
 const Contact = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.phone.trim()) {
       toast({ title: "Please fill required fields", variant: "destructive" });
       return;
     }
-    toast({ title: "Enquiry Submitted!", description: "We will contact you shortly." });
-    setForm({ name: "", phone: "", email: "", message: "" });
+
+    try {
+      setSubmitting(true);
+      await saveContactEnquiry({
+        name: form.name.trim(),
+        phone: form.phone.trim(),
+        email: form.email.trim(),
+        message: form.message.trim(),
+      });
+      toast({ title: "Enquiry Submitted!", description: "We will contact you shortly." });
+      setForm({ name: "", phone: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Failed to save enquiry", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again in a moment.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -141,8 +162,13 @@ const Contact = () => {
                       maxLength={1000}
                     />
                   </div>
-                  <Button type="submit" size="lg" className="w-full gradient-amber text-accent-foreground font-semibold shadow-amber hover:opacity-90 transition-opacity">
-                    <Send className="mr-2 h-5 w-5" /> Submit Enquiry
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full gradient-amber text-accent-foreground font-semibold shadow-amber hover:opacity-90 transition-opacity disabled:opacity-70"
+                    disabled={submitting}
+                  >
+                    <Send className="mr-2 h-5 w-5" /> {submitting ? "Submitting..." : "Submit Enquiry"}
                   </Button>
                 </form>
               </div>

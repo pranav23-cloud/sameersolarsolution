@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import Installations from "./pages/Installations";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import AdminEnquiries from "./pages/AdminEnquiries";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const AppContent = () => {
       <Route path="/services" element={<Services />} />
       <Route path="/installations" element={<Installations />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/admin/enquiries" element={<AdminEnquiries />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
