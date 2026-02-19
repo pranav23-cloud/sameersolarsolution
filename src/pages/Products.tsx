@@ -9,7 +9,7 @@ import pressurizedHeaterImg from "@/assets/SOLAR  PRESSURIZED  WATER HEATER.jpg"
 import heatPumpImg from "@/assets/SOLAR  HEAT PUMP.jpg";
 import onGridImg from "@/assets/SOLAR ON GRID SYSTEM.jpg";
 import offGridImg from "@/assets/SOLAR OFF GRID SYSTEM.jpg";
-import pumpImg from "@/assets/SOLAR   PUMP.jpg";
+import pumpImg from "@/assets/Solar Water Pump.jpg";
 import streetLightImg from "@/assets/SOLAR   STREET LIGHTS.jpg";
 import upsImg from "@/assets/Solar UPS.jpeg";
 
@@ -96,8 +96,8 @@ const ProductCard = ({ product, index }: { product: (typeof thermalProducts)[0];
     variants={fadeUp}
     className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-solar transition-shadow"
   >
-    <div className="relative h-48 overflow-hidden">
-      <img src={product.img} alt={product.title} className="w-full h-full object-cover" />
+    <div className="relative h-56 overflow-hidden bg-muted/30 flex items-center justify-center">
+      <img src={product.img} alt={product.title} className="w-full h-full object-contain" />
       <div className="absolute top-3 right-3 gradient-amber p-2 rounded-full">
         <product.icon className="h-5 w-5 text-accent-foreground" />
       </div>
