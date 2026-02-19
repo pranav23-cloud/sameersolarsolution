@@ -17,7 +17,7 @@ const thermalProducts = [
   {
     title: "Solar Water Heaters",
     desc: "Energy-efficient solar water heating systems for residential, commercial and institutional use. Available in ETC and FPC variants.",
-    benefits: ["Reduce electricity bills by up to 70%", "Low maintenance", "Govt. subsidy available", "5-year warranty"],
+    benefits: ["Reduce electricity bills by up to 70%", "Low maintenance"],
     img: waterHeaterImg,
     icon: Droplets,
   },
