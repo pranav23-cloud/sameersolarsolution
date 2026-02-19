@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import { Droplets, Sun, Zap, Battery, Lightbulb, Plug, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import waterHeaterImg from "@/assets/Solar Water Heatrer 2000LTRS.jpg";
-import rooftopImg from "@/assets/Solar 5KW Off Grid System.jpg";
-import streetLightImg from "@/assets/Solar Street Light.jpg";
-import pumpImg from "@/assets/Solar Water Pump.jpg";
+import fpcImg from "@/assets/FPC.jpg";
+import etcImg from "@/assets/ETC.jpg";
+import pressurizedHeaterImg from "@/assets/SOLAR  PRESSURIZED  WATER HEATER.jpg";
+import heatPumpImg from "@/assets/SOLAR  HEAT PUMP.jpg";
+import onGridImg from "@/assets/SOLAR ON GRID SYSTEM.jpg";
+import offGridImg from "@/assets/SOLAR OFF GRID SYSTEM.jpg";
+import pumpImg from "@/assets/SOLAR   PUMP.jpg";
+import streetLightImg from "@/assets/SOLAR   STREET LIGHTS.jpg";
+import upsImg from "@/assets/Solar UPS.jpeg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,67 +20,74 @@ const fadeUp = {
 
 const thermalProducts = [
   {
-    title: "Solar Water Heaters",
-    desc: "Energy-efficient solar water heating systems for residential, commercial and institutional use. Available in ETC and FPC variants.",
-    benefits: ["Reduce electricity bills by up to 70%", "Low maintenance"],
-    img: waterHeaterImg,
+    title: "Flat Plate Collector (FPC) System",
+    desc: "Robust solar water heating system made with metal plates for long-lasting performance.",
+    benefits: ["Made up of Metal Plates", "Long Life", "Costs More"],
+    img: fpcImg,
+    icon: Sun,
+  },
+  {
+    title: "Evacuated Tube Collector (ETC) System",
+    desc: "Glass tube design offering excellent heat retention and efficiency.",
+    benefits: ["Made up of Glass Tubes", "With less life", "Cheaper", "Best in reducing heat loss"],
+    img: etcImg,
     icon: Droplets,
   },
   {
-    title: "Solar ETC Systems",
-    desc: "Evacuated Tube Collector systems offering high efficiency even in cloudy conditions. Ideal for large-scale water heating.",
-    benefits: ["Works in low sunlight", "High thermal efficiency", "Durable glass tubes", "Suitable for cold regions"],
-    img: waterHeaterImg,
-    icon: Sun,
+    title: "Solar Pressurized Water Heater",
+    desc: "Efficient and consistent water pressure for larger households and multi-storied buildings.",
+    benefits: ["Efficiency and Consistent water pressure", "Suitable for larger households", "Multi storied buildings", "For tub bath and rainy shower", "Made up of Metal Plates", "Long Life"],
+    img: pressurizedHeaterImg,
+    icon: Droplets,
   },
   {
-    title: "Solar FPC Systems",
-    desc: "Flat Plate Collector systems designed for consistent hot water supply. Robust construction with copper absorber plates.",
-    benefits: ["Long lifespan", "Consistent performance", "Easy maintenance", "Aesthetically pleasing"],
-    img: waterHeaterImg,
-    icon: Sun,
-  },
-  {
-    title: "Solar Heat Pumps",
-    desc: "Energy-efficient heat pump systems that work in conjunction with solar for year-round hot water regardless of weather.",
-    benefits: ["All-weather operation", "Energy savings up to 75%", "Compact design", "Smart controls"],
-    img: waterHeaterImg,
+    title: "Solar Heat Pump",
+    desc: "Constant hot water supply with energy savings up to 70%. Works in any climate.",
+    benefits: ["Constant Hot water supply", "Energy saving up to 70%", "Works in any climate — mainly cloudy and rainy", "Adaptability", "Normal Life"],
+    img: heatPumpImg,
     icon: Zap,
   },
 ];
 
 const powerProducts = [
   {
-    title: "Solar Rooftop Systems",
-    desc: "Grid-connected and off-grid rooftop solar panel systems for homes and commercial buildings. Generate your own electricity.",
-    benefits: ["Reduce electricity bills", "Net metering available", "25-year panel life", "Govt. subsidy eligible"],
-    img: rooftopImg,
+    title: "Solar On-Grid System",
+    desc: "Connected to the public electricity grid. Sends excess solar power back to the grid for additional income.",
+    benefits: ["Connected to Public electricity Grid", "Will send excess solar power back to grid", "Lower cost", "More revenue per unit generated", "Electricity bill will be zero plus additional income"],
+    img: onGridImg,
     icon: Sun,
   },
   {
-    title: "Solar Street Lights",
-    desc: "All-in-one solar LED street lights for roads, campuses, parks, and villages. Fully automatic with dusk-to-dawn operation.",
-    benefits: ["No wiring needed", "Automatic operation", "Low maintenance", "Long battery life"],
-    img: streetLightImg,
-    icon: Lightbulb,
+    title: "Solar Off-Grid System",
+    desc: "Entirely disconnected from the public grid. Self-sufficient and independent power supply using batteries.",
+    benefits: ["Entirely disconnected from public Grid", "Use Batteries to store energy", "Self sufficient and independent power supply", "Higher initial cost for batteries", "Less or no revenue", "Electricity bill reduced by 50%"],
+    img: offGridImg,
+    icon: Battery,
   },
   {
-    title: "Solar Pumps",
-    desc: "Solar-powered water pumps for agriculture, irrigation and drinking water supply. AC and DC pump options available.",
-    benefits: ["Zero electricity cost", "Govt. subsidy available", "Reliable in rural areas", "Easy installation"],
+    title: "Solar Pump",
+    desc: "Used predominantly in agricultural fields. Open well and submersible options available.",
+    benefits: ["Used in agricultural fields predominantly", "Open Well — Solar panels convert sunlight to DC current to run motor", "Submersible solar pumps available", "Cost effective and eco friendly", "Higher initial cost"],
     img: pumpImg,
     icon: Battery,
   },
   {
+    title: "Solar Street Lights",
+    desc: "Solar panels convert sunlight into power, stored in batteries. Dusk-to-dawn automatic operation.",
+    benefits: ["Solar panels convert sunlight into power energy", "Stored in batteries", "Dusk Down system — Automatically switches on in dark", "Sensitive photocell", "Automatic operation in charging batteries"],
+    img: streetLightImg,
+    icon: Lightbulb,
+  },
+  {
     title: "Solar UPS",
-    desc: "Solar-powered UPS systems for uninterrupted backup power. Charges through solar panels during the day for nighttime use.",
+    desc: "Solar-powered UPS for uninterrupted backup power. Charges through solar panels during the day.",
     benefits: ["Clean backup power", "No fuel needed", "Silent operation", "Long battery life"],
-    img: rooftopImg,
+    img: upsImg,
     icon: Plug,
   },
 ];
 
-const ProductCard = ({ product, index }: { product: typeof thermalProducts[0]; index: number }) => (
+const ProductCard = ({ product, index }: { product: (typeof thermalProducts)[0]; index: number }) => (
   <motion.div
     custom={index}
     initial="hidden"
@@ -132,7 +144,9 @@ const Products = () => {
             <h2 className="text-3xl font-bold text-primary">Solar Thermal Products</h2>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {thermalProducts.map((p, i) => <ProductCard key={p.title} product={p} index={i} />)}
+            {thermalProducts.map((p, i) => (
+              <ProductCard key={p.title} product={p} index={i} />
+            ))}
           </div>
         </div>
       </section>
@@ -144,8 +158,10 @@ const Products = () => {
             <span className="inline-block gradient-amber text-accent-foreground text-sm font-semibold px-4 py-1.5 rounded-full mb-4">Category B</span>
             <h2 className="text-3xl font-bold text-primary">Solar Power Products</h2>
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {powerProducts.map((p, i) => <ProductCard key={p.title} product={p} index={i} />)}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {powerProducts.map((p, i) => (
+              <ProductCard key={p.title} product={p} index={i} />
+            ))}
           </div>
         </div>
       </section>
