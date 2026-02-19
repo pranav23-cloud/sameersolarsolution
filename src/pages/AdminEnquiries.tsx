@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Layout from "@/components/Layout";
-import { listContactEnquiries, ContactEnquiry } from "@/lib/firebase";
+import { auth, listContactEnquiries, ContactEnquiry } from "@/lib/firebase";
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut, type User } from "firebase/auth";
 
 type EnquiryWithId = ContactEnquiry & { id: string };
 
 const AdminEnquiries = () => {
-  const [authorized, setAuthorized] = useState(false);
-  const [codeInput, setCodeInput] = useState("");
+  const [user, setUser] = useState<User | null>(null);
+  const [authReady, setAuthReady] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggingIn, setLoggingIn] = useState(false);
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (u) => {
+      setUser(u);
+      setAuthReady(true);
+    });
+    return () => unsub();
+  }, []);
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery<EnquiryWithId[]>({
     queryKey: ["admin-enquiries"],
@@ -15,40 +27,65 @@ const AdminEnquiries = () => {
       const result = await listContactEnquiries();
       return result;
     },
-    enabled: authorized,
+    enabled: !!user,
   });
 
-  const handleAuthorize = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (codeInput.trim() === import.meta.env.VITE_ADMIN_ACCESS_CODE) {
-      setAuthorized(true);
-    } else {
-      alert("Invalid access code");
+    try {
+      setLoggingIn(true);
+      await signInWithEmailAndPassword(auth, email.trim(), password);
+      setPassword("");
+    } catch (err) {
+      console.error("Login failed", err);
+      alert("Login failed. Please check email/password.");
+    } finally {
+      setLoggingIn(false);
     }
   };
 
-  if (!authorized) {
+  if (!authReady) {
     return (
       <Layout>
         <section className="py-20">
           <div className="container mx-auto px-4 max-w-md">
-            <h1 className="text-2xl font-bold mb-4">Admin Access</h1>
+            <p className="text-sm text-muted-foreground">Loading...</p>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
+  if (!user) {
+    return (
+      <Layout>
+        <section className="py-20">
+          <div className="container mx-auto px-4 max-w-md">
+            <h1 className="text-2xl font-bold mb-4">Admin Login</h1>
             <p className="text-sm text-muted-foreground mb-6">
-              Enter the admin access code to view contact enquiries.
+              Sign in with your Firebase admin email and password to view contact enquiries.
             </p>
-            <form onSubmit={handleAuthorize} className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-4">
+              <input
+                type="email"
+                className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <input
                 type="password"
                 className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
-                placeholder="Access code"
-                value={codeInput}
-                onChange={(e) => setCodeInput(e.target.value)}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button
                 type="submit"
-                className="w-full rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+                className="w-full rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-70"
+                disabled={loggingIn}
               >
-                Continue
+                {loggingIn ? "Signing in..." : "Sign in"}
               </button>
             </form>
           </div>
@@ -68,14 +105,23 @@ const AdminEnquiries = () => {
                 Latest form submissions from the website contact page.
               </p>
             </div>
-            <button
-              type="button"
-              onClick={() => refetch()}
-              className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-muted disabled:opacity-60"
-              disabled={isFetching}
-            >
-              {isFetching ? "Refreshing..." : "Refresh"}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => refetch()}
+                className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-muted disabled:opacity-60"
+                disabled={isFetching}
+              >
+                {isFetching ? "Refreshing..." : "Refresh"}
+              </button>
+              <button
+                type="button"
+                onClick={() => signOut(auth)}
+                className="rounded-md border border-border bg-background px-3 py-1.5 text-sm hover:bg-muted"
+              >
+                Logout
+              </button>
+            </div>
           </div>
 
           {isLoading && <p className="text-sm text-muted-foreground">Loading enquiries...</p>}

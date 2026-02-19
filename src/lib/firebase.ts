@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics, isSupported as isAnalyticsSupported } from "firebase/analytics";
 import { getDatabase, ref, push, get, child } from "firebase/database";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA1C-PW0wTHvOCOfEIf6mgUaB8KaEzIKyM",
@@ -15,6 +16,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+export const auth = getAuth(app);
 
 // Analytics is optional and only works in supported environments (HTTPS, browser).
 let analyticsPromise: Promise<ReturnType<typeof getAnalytics> | null> | null = null;
